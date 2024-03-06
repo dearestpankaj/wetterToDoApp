@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ToDoShared/ToDoListManager.h>
+#import <ToDoShared/TreeNode.h>
 
 //! Project version number for ToDoShared.
 FOUNDATION_EXPORT double ToDoSharedVersionNumber;
