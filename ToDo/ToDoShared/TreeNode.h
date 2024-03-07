@@ -9,8 +9,9 @@
 
 @property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) NSMutableArray<TreeNode *> *children;
+@property(nonatomic, strong) NSString *number;
 
-- (instancetype)initWithValue:(NSString *)value;
+- (instancetype)initWithValue:(NSString *)title :(NSString *)number;
 - (void)addChild:(TreeNode *)child;
 
 @end

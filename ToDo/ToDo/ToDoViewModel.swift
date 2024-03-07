@@ -25,24 +25,14 @@ class ToDoViewModel {
     }
     
     func getToDoListCount() -> Int {
-        print(toToDoListManager.todoList)
-//        for nodeMain in toToDoListManager.todoList {
-//            if let nodeMain = nodeMain as? TreeNode {
-//                
-//            }
-//        }
-        print(countItemsInList(list: toToDoListManager.todoList as! [TreeNode]))
-        return toToDoListManager.todoList.count
+        countItemsInList(list: toToDoListManager.todoList as! [TreeNode])
     }
     
     func countItemsInList(list: [TreeNode]) -> Int {
         var count = 0
 
         for item in list {
-            // Count the current item
             count += 1
-
-            // Recursively count the subitems
             if let children = item.children as? [TreeNode] {
                 count += countItemsInList(list: children)
             }
@@ -52,6 +42,6 @@ class ToDoViewModel {
     }
     
     func getToDoListItem(index: Int) -> TreeNode? {
-        toToDoListManager.todoList[index] as? TreeNode
+        toToDoListManager.getFlattenedArray()[index] as? TreeNode
     }
 }

@@ -10,10 +10,11 @@
 
 @implementation TreeNode
 
-- (instancetype)initWithValue:(NSString *)title {
+- (instancetype)initWithValue:(NSString *)title :(NSString *)number {
     self = [super init];
     if (self) {
-        _title = title;
+        _title = [title copy];
+        _number = [number copy];
         _children = [[NSMutableArray alloc] init];
     }
     return self;
@@ -26,6 +27,7 @@
 - (void)dealloc
 {
     [_title release];
+    [_number release];
     [_children release];
     
     [super dealloc];

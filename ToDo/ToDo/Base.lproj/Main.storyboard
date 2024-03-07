@@ -54,17 +54,18 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="3RD-dL-n2w" firstAttribute="leading" secondItem="pSj-pV-ClB" secondAttribute="leadingMargin" id="4BB-Sv-t4l"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="top" secondItem="pSj-pV-ClB" secondAttribute="topMargin" constant="8.6666666666666714" id="NN1-WO-7if"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="trailing" secondItem="pSj-pV-ClB" secondAttribute="trailingMargin" id="c3x-Qx-HCL"/>
                                                 <constraint firstItem="xmn-lF-9wj" firstAttribute="centerY" secondItem="4gh-Pw-HNF" secondAttribute="centerY" id="co4-su-K1S"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="centerY" secondItem="3RD-dL-n2w" secondAttribute="centerY" id="flO-9l-EOU"/>
-                                                <constraint firstItem="3RD-dL-n2w" firstAttribute="leading" secondItem="pSj-pV-ClB" secondAttribute="leadingMargin" id="lgE-Xp-lLI"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="leading" secondItem="xmn-lF-9wj" secondAttribute="trailing" constant="18" id="uTx-jn-kad"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="centerY" secondItem="pSj-pV-ClB" secondAttribute="centerY" id="vC3-Fl-Fhb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="todoItemLabel" destination="3RD-dL-n2w" id="khI-qh-PO0"/>
+                                            <outlet property="todoItemLeadingConstraint" destination="4BB-Sv-t4l" id="cQU-Ff-VJg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -100,15 +101,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aan-rp-Tnb">
-                                <rect key="frame" x="16" y="185" width="361" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aan-rp-Tnb">
+                                <rect key="frame" x="16" y="91" width="361" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="0EQ-7J-kwP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be9-Dd-7o8">
-                                <rect key="frame" x="16" y="115" width="33" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be9-Dd-7o8">
+                                <rect key="frame" x="16" y="75" width="361" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -116,9 +118,18 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RMF-Jc-TfB"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aan-rp-Tnb" firstAttribute="top" secondItem="be9-Dd-7o8" secondAttribute="bottom" constant="16" id="52o-rY-7a0"/>
+                            <constraint firstItem="RMF-Jc-TfB" firstAttribute="trailing" secondItem="be9-Dd-7o8" secondAttribute="trailing" constant="16" id="5t2-FW-dhA"/>
+                            <constraint firstItem="aan-rp-Tnb" firstAttribute="leading" secondItem="be9-Dd-7o8" secondAttribute="leading" id="H5E-tF-BcF"/>
+                            <constraint firstItem="be9-Dd-7o8" firstAttribute="top" secondItem="RMF-Jc-TfB" secondAttribute="top" constant="16" id="HSu-Q9-NjH"/>
+                            <constraint firstItem="be9-Dd-7o8" firstAttribute="leading" secondItem="RMF-Jc-TfB" secondAttribute="leading" constant="16" id="LVZ-aj-9cl"/>
+                            <constraint firstItem="aan-rp-Tnb" firstAttribute="trailing" secondItem="be9-Dd-7o8" secondAttribute="trailing" id="TyW-UB-GNo"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="taskTextField" destination="aan-rp-Tnb" id="jNa-Xt-4dL"/>
+                        <outlet property="titleLabel" destination="be9-Dd-7o8" id="0gr-cK-Pzy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAd-y9-J8X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

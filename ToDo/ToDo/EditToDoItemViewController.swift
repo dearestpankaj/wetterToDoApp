@@ -11,6 +11,8 @@ import ToDoShared
 class EditToDoItemViewController: UIViewController {
     
     @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     let viewModel: EditToDoItemViewModel!
     let selectedNode: TreeNode?
     let isSubTask: Bool!
@@ -24,11 +26,11 @@ class EditToDoItemViewController: UIViewController {
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveNode))
         
-        
         guard let selectedNode else {
             return
         }
-        
+        titleLabel.text = selectedNode.title
+        // FIXME: something is not right here
         if !isSubTask {
             taskTextField.text = selectedNode.title
         }
@@ -50,9 +52,12 @@ class EditToDoItemViewController: UIViewController {
             viewModel.addItem(text: text)
         } else {
             if isSubTask {
-                let node  = TreeNode()
-                node.title = text
-                selectedNode?.children.add(node)
+                let childrenCount = String((selectedNode?.children.count ?? 0) + 1)
+                if let nodeNumber = selectedNode?.number {
+                    let node  = TreeNode(value: text, "\(nodeNumber).\(childrenCount)")
+                    selectedNode?.children.add(node)
+                }
+                
             } else {
                 selectedNode?.title = text
             }
