@@ -22,6 +22,11 @@
     [_todoList addObject:child];
 }
 
+- (void)addNodeItem: (NSString *)title {
+    TreeNode *node = [[[TreeNode alloc] initWithValue:title] autorelease];
+    [_todoList addObject:node];
+}
+
 - (NSMutableArray *) getToDoList {
     return _todoList;
 }

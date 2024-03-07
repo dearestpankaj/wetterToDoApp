@@ -15,10 +15,78 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RXu-Gz-Vpr">
+                                <rect key="frame" x="0.0" y="20" width="393" height="812"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoListItemTableViewCell" rowHeight="69" id="GDF-ku-yeO" customClass="ToDoListItemTableViewCell" customModule="ToDo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="69"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GDF-ku-yeO" id="pSj-pV-ClB">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RD-dL-n2w">
+                                                    <rect key="frame" x="20" y="24" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.forward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4gh-Pw-HNF">
+                                                    <rect key="frame" x="343" y="21.666666666666671" width="30" height="26"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="mh7-RL-Afe"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmn-lF-9wj">
+                                                    <rect key="frame" x="295" y="19.666666666666671" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="Dwt-iY-Wc2"/>
+                                                        <constraint firstAttribute="height" constant="30" id="mES-Vo-f0H"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="taskCompletionAction:" destination="GDF-ku-yeO" eventType="touchUpInside" id="VFK-nr-8RM"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4gh-Pw-HNF" firstAttribute="top" secondItem="pSj-pV-ClB" secondAttribute="topMargin" constant="8.6666666666666714" id="NN1-WO-7if"/>
+                                                <constraint firstItem="4gh-Pw-HNF" firstAttribute="trailing" secondItem="pSj-pV-ClB" secondAttribute="trailingMargin" id="c3x-Qx-HCL"/>
+                                                <constraint firstItem="xmn-lF-9wj" firstAttribute="centerY" secondItem="4gh-Pw-HNF" secondAttribute="centerY" id="co4-su-K1S"/>
+                                                <constraint firstItem="4gh-Pw-HNF" firstAttribute="centerY" secondItem="3RD-dL-n2w" secondAttribute="centerY" id="flO-9l-EOU"/>
+                                                <constraint firstItem="3RD-dL-n2w" firstAttribute="leading" secondItem="pSj-pV-ClB" secondAttribute="leadingMargin" id="lgE-Xp-lLI"/>
+                                                <constraint firstItem="4gh-Pw-HNF" firstAttribute="leading" secondItem="xmn-lF-9wj" secondAttribute="trailing" constant="18" id="uTx-jn-kad"/>
+                                                <constraint firstItem="4gh-Pw-HNF" firstAttribute="centerY" secondItem="pSj-pV-ClB" secondAttribute="centerY" id="vC3-Fl-Fhb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="todoItemLabel" destination="3RD-dL-n2w" id="khI-qh-PO0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="2co-jx-rpQ"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ek4-vJ-vyh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RXu-Gz-Vpr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" symbolic="YES" id="FbM-8o-SMx"/>
+                            <constraint firstItem="RXu-Gz-Vpr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KFA-JU-SXz"/>
+                            <constraint firstAttribute="bottom" secondItem="RXu-Gz-Vpr" secondAttribute="bottom" constant="20" symbolic="YES" id="Xbq-9N-571"/>
+                            <constraint firstItem="RXu-Gz-Vpr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pUF-A4-JmH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3FE-cH-yIi"/>
+                    <connections>
+                        <outlet property="todoTableView" destination="RXu-Gz-Vpr" id="TKQ-zw-IZ1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,6 +117,9 @@
                         <viewLayoutGuide key="safeArea" id="RMF-Jc-TfB"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="taskTextField" destination="aan-rp-Tnb" id="jNa-Xt-4dL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAd-y9-J8X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,6 +145,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="123"/>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

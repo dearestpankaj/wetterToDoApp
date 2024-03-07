@@ -14,13 +14,21 @@
     self = [super init];
     if (self) {
         _title = title;
-        _children = [NSMutableArray array];
+        _children = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (void)addChild:(TreeNode *)child {
-    [self.children addObject:child];
+    [_children addObject:child];
+}
+
+- (void)dealloc
+{
+    [_title release];
+    [_children release];
+    
+    [super dealloc];
 }
 
 @end

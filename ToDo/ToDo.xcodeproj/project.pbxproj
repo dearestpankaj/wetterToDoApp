@@ -25,6 +25,7 @@
 		15FEC2F32B9792E700BD8597 /* TreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FEC2ED2B97828E00BD8597 /* TreeNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15FEC2F92B9799AD00BD8597 /* EditToDoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */; };
 		15FEC2FB2B97C97E00BD8597 /* EditToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */; };
+		15FEC2FD2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2FC2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		15FEC2EF2B978E7B00BD8597 /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
 		15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoItemViewController.swift; sourceTree = "<group>"; };
 		15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoItemViewModel.swift; sourceTree = "<group>"; };
+		15FEC2FC2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				15FEC2EF2B978E7B00BD8597 /* ToDoViewModel.swift */,
 				15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */,
 				15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */,
+				15FEC2FC2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15FEC2FD2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift in Sources */,
 				15FEC2F02B978E7B00BD8597 /* ToDoViewModel.swift in Sources */,
 				15FEC2FB2B97C97E00BD8597 /* EditToDoItemViewModel.swift in Sources */,
 				15BCA7402B974D71006A58C0 /* ToDoListViewController.swift in Sources */,
