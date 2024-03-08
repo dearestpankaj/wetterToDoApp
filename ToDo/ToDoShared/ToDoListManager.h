@@ -17,5 +17,7 @@
 - (void)addChild:(TreeNode *)child;
 
 - (NSMutableArray *) getToDoList;
-- (NSMutableArray *) getFlattenedArray;
+- (NSMutableArray *) getFlattenedNodes;
+- (NSMutableArray *) getFlattenedChildren: (TreeNode *) node;
+- (void) setNodeAndChildrenCompletion: (TreeNode *) node :(bool) isComplete;
 @end

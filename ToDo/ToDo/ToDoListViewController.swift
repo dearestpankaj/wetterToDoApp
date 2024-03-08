@@ -46,6 +46,7 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoListItemTableViewCell") as? ToDoListItemTableViewCell else {
             return UITableViewCell()
         }
+        cell.delegate = self
         cell.setContent(node: viewModel.getToDoListItem(index: indexPath.row))
         return cell
     }
@@ -77,5 +78,12 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteSubTask, addSubTask])
         return swipeActions
+    }
+}
+
+extension ToDoListViewController: ToDoListItemTableViewCellDelegate {
+    func nodeCompletion(node: TreeNode, isComplete: Bool) {
+        viewModel.setNodeCompletion(node: node, isComplete: isComplete)
+        todoTableView.reloadData()
     }
 }

@@ -8,11 +8,17 @@
 import UIKit
 import ToDoShared
 
+protocol ToDoListItemTableViewCellDelegate: AnyObject {
+    func nodeCompletion(node: TreeNode, isComplete: Bool)
+}
+
 class ToDoListItemTableViewCell: UITableViewCell {
     @IBOutlet weak var todoItemLabel: UILabel!
     @IBOutlet weak var todoItemLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var completionButton: UIButton!
-    var myNode: TreeNode?
+    var myNode: TreeNode!
+    
+    weak var delegate: ToDoListItemTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,7 +49,7 @@ class ToDoListItemTableViewCell: UITableViewCell {
     }
     
     @IBAction func taskCompletionAction(_ sender: UIButton) {
-        completionButton.isSelected = !completionButton.isSelected
-        myNode?.isCompleted = completionButton.isSelected
+        completionButton.isSelected = !myNode.isCompleted
+        delegate?.nodeCompletion(node: myNode, isComplete: !myNode.isCompleted)
     }
 }
