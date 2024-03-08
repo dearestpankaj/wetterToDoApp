@@ -27,17 +27,6 @@
     return _todoList;
 }
 
--(void) getSubItems:(NSMutableArray *) array {
-    for (TreeNode *node in array) {
-        [_flatTodoList addObject:node];
-        if ([node children] != nil) {
-            [self getSubItems:[node children]];
-        } else {
-            
-        }
-    }
-}
-
 - (NSMutableArray *) getFlattenedArray {
     return [self flattenedArray:_todoList];
 }

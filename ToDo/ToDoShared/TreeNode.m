@@ -13,6 +13,7 @@
 - (instancetype)initWithValue:(NSString *)title :(NSString *)number {
     self = [super init];
     if (self) {
+        _isCompleted = false;
         _title = [title copy];
         _number = [number copy];
         _children = [[NSMutableArray alloc] init];

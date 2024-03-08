@@ -11,9 +11,13 @@ import ToDoShared
 class ToDoListItemTableViewCell: UITableViewCell {
     @IBOutlet weak var todoItemLabel: UILabel!
     @IBOutlet weak var todoItemLeadingConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var completionButton: UIButton!
+    var myNode: TreeNode?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        completionButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+        completionButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .selected)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,6 +32,8 @@ class ToDoListItemTableViewCell: UITableViewCell {
             }
             setLeadingConstraint(title: number)
             todoItemLabel.text = "\(prefix) \(number) - \(title)"
+            completionButton.isSelected = node.isCompleted
+            myNode = node
         }
     }
     
@@ -37,6 +43,7 @@ class ToDoListItemTableViewCell: UITableViewCell {
     }
     
     @IBAction func taskCompletionAction(_ sender: UIButton) {
-        
+        completionButton.isSelected = !completionButton.isSelected
+        myNode?.isCompleted = completionButton.isSelected
     }
 }

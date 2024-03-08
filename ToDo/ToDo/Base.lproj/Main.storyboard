@@ -64,6 +64,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="completionButton" destination="xmn-lF-9wj" id="gyz-d6-Kbt"/>
                                             <outlet property="todoItemLabel" destination="3RD-dL-n2w" id="khI-qh-PO0"/>
                                             <outlet property="todoItemLeadingConstraint" destination="4BB-Sv-t4l" id="cQU-Ff-VJg"/>
                                         </connections>
