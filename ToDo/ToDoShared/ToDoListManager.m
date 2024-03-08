@@ -121,7 +121,6 @@
         } else if([element children] != nil && [[element children] count] > 0) {
             [self deleteNode:[element children] :treeNode];
         }
-        [element release];
     }
     return  nodeArray;
 }
