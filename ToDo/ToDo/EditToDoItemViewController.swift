@@ -53,7 +53,7 @@ class EditToDoItemViewController: UIViewController {
         } else {
             if isSubTask {
                 let childrenCount = String((selectedNode?.children.count ?? 0) + 1)
-                if let nodeNumber = selectedNode?.number {
+                if let nodeNumber = selectedNode?.identifier {
                     let node  = TreeNode(value: text, "\(nodeNumber).\(childrenCount)")
                     selectedNode?.children.add(node)
                 }

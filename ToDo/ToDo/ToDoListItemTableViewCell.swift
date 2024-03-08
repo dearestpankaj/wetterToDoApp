@@ -31,7 +31,7 @@ class ToDoListItemTableViewCell: UITableViewCell {
     }
 
     func setContent(node: TreeNode?) {
-        if let node = node, let title = node.title, let number = node.number {
+        if let node = node, let title = node.title, let number = node.identifier {
             var prefix = "Root "
             if number.contains("."){
                 prefix = "Child "

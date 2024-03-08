@@ -46,4 +46,18 @@ class ToDoViewModel {
     func setNodeCompletion(node: TreeNode, isComplete: Bool) {
         toDoListManager.setNodeAndChildrenCompletion(node, isComplete)
     }
+    
+    func removeNodeAtIndex(index: Int, completion: (_ indexes: [IndexPath]) -> Void) {
+        let node = getToDoListItem(index: index)
+        toDoListManager.remove(node)
+        let todoItemsBeforeDeletion = todoList
+        getToDoList()
+        var indexTobDeleted = [IndexPath]()
+        for (index, node) in todoItemsBeforeDeletion.enumerated() {
+            if !todoList.contains(node) {
+                indexTobDeleted.append(IndexPath(row: index, section: 0))
+            }
+        }
+        completion(indexTobDeleted)
+    }
 }

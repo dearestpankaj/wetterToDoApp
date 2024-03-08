@@ -37,6 +37,7 @@ class ToDoListViewController: UIViewController {
     func showTodoItemViewController(node: TreeNode? = nil, isSubTask: Bool = false) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: String(describing: EditToDoItemViewController.self)) { coder in
+            
             return EditToDoItemViewController(coder: coder, viewModel: EditToDoItemViewModel(toDoListManager: self.viewModel.toDoListManager), selectedNode: node, isSubTask: isSubTask)
         }
         show(viewController, sender: self)
@@ -62,7 +63,6 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
         let addSubTask = UIContextualAction(style: .normal, title: "Add Subtask") { [weak self, indexPath] (action, view, completionHandler) in
           if let self = self {
               let listItem = viewModel.getToDoListItem(index: indexPath.row)
@@ -75,11 +75,12 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let deleteSubTask = UIContextualAction(style: .destructive, title: "Delete") { [weak self, indexPath] (action, view, completionHandler) in
           if let self = self {
-              let listItem = viewModel.getToDoListItem(index: indexPath.row)
-
-            completionHandler(true) // New Line
+              viewModel.removeNodeAtIndex(index: indexPath.row) { indexes in
+                  tableView.deleteRows(at: indexes, with: .automatic)
+              }
+              completionHandler(true)
            }
-           completionHandler(false) // New Line
+           completionHandler(false)
         }
         
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteSubTask, addSubTask])

@@ -20,4 +20,5 @@
 - (NSMutableArray *) getFlattenedNodes;
 - (NSMutableArray *) getFlattenedChildren: (TreeNode *) node;
 - (void) setNodeAndChildrenCompletion: (TreeNode *) node :(bool) isComplete;
+- (void) remove: (TreeNode *) treeNode;
 @end

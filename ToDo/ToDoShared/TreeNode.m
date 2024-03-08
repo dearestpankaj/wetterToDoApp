@@ -15,7 +15,7 @@
     if (self) {
         _isCompleted = false;
         _title = [title copy];
-        _number = [number copy];
+        _identifier = [number copy];
         _children = [[NSMutableArray alloc] init];
     }
     return self;
@@ -28,7 +28,7 @@
 - (void)dealloc
 {
     [_title release];
-    [_number release];
+    [_identifier release];
     [_children release];
     
     [super dealloc];
