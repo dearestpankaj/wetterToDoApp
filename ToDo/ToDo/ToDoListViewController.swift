@@ -11,16 +11,18 @@ import ToDoShared
 class ToDoListViewController: UIViewController {
 
     @IBOutlet weak var todoTableView: UITableView!
-    let viewModel = ToDoViewModel(toToDoListManager: ToDoListManager())
+    let viewModel = ToDoViewModel(toDoListManager: ToDoListManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addTapped))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reorder", style: .done, target: self, action: #selector(reorderTapped))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.getToDoList()
         todoTableView.reloadData()
     }
 
@@ -28,10 +30,14 @@ class ToDoListViewController: UIViewController {
         showTodoItemViewController()
     }
     
+    @objc func reorderTapped(sender: UIBarButtonItem) {
+        todoTableView.isEditing = !todoTableView.isEditing
+    }
+    
     func showTodoItemViewController(node: TreeNode? = nil, isSubTask: Bool = false) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: String(describing: EditToDoItemViewController.self)) { coder in
-            return EditToDoItemViewController(coder: coder, viewModel: EditToDoItemViewModel(toToDoListManager: self.viewModel.toToDoListManager), selectedNode: node, isSubTask: isSubTask)
+            return EditToDoItemViewController(coder: coder, viewModel: EditToDoItemViewModel(toDoListManager: self.viewModel.toDoListManager), selectedNode: node, isSubTask: isSubTask)
         }
         show(viewController, sender: self)
     }

@@ -10,23 +10,20 @@ import ToDoShared
 
 class ToDoViewModel {
     var todoList = [TreeNode]()
-    let toToDoListManager: ToDoListManager
+    let toDoListManager: ToDoListManager
     
-    init(toToDoListManager: ToDoListManager) {
-        self.toToDoListManager = toToDoListManager
+    init(toDoListManager: ToDoListManager) {
+        self.toDoListManager = toDoListManager
     }
     
     func getToDoList() {
-        if let list = toToDoListManager.todoList as? [TreeNode] {
+        if let list = toDoListManager.getFlattenedNodes() as? [TreeNode] {
             todoList = list
         }
     }
     
     func getToDoListCount() -> Int {
-        if let list = toToDoListManager.todoList as? [TreeNode] {
-            return countItemsInList(list: list)
-        }
-        return 0
+        todoList.count
     }
     
     func countItemsInList(list: [TreeNode]) -> Int {
@@ -43,10 +40,10 @@ class ToDoViewModel {
     }
     
     func getToDoListItem(index: Int) -> TreeNode? {
-        toToDoListManager.getFlattenedNodes()[index] as? TreeNode
+        return todoList[index]
     }
     
     func setNodeCompletion(node: TreeNode, isComplete: Bool) {
-        toToDoListManager.setNodeAndChildrenCompletion(node, isComplete)
+        toDoListManager.setNodeAndChildrenCompletion(node, isComplete)
     }
 }

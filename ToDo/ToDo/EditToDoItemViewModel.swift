@@ -10,15 +10,15 @@ import ToDoShared
 
 class EditToDoItemViewModel {
     
-    let toToDoListManager: ToDoListManager
+    let toDoListManager: ToDoListManager
     
-    init(toToDoListManager: ToDoListManager) {
-        self.toToDoListManager = toToDoListManager
+    init(toDoListManager: ToDoListManager) {
+        self.toDoListManager = toDoListManager
     }
     
     func addItem(text: String) {
-        let itemCount = toToDoListManager.todoList.count
+        let itemCount = toDoListManager.todoList.count
         let node = TreeNode(value: text, String(itemCount + 1))
-        toToDoListManager.addChild(node)
+        toDoListManager.addChild(node)
     }
 }
