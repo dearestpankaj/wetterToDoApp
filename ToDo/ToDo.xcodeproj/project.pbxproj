@@ -122,6 +122,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		155FD5082B9DF63800604788 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				155FD50A2B9DF65300604788 /* EditToDo */,
+				155FD5092B9DF64600604788 /* ToDo */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		155FD5092B9DF64600604788 /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				155FD50D2B9DF68600604788 /* Presentation */,
+			);
+			path = ToDo;
+			sourceTree = "<group>";
+		};
+		155FD50A2B9DF65300604788 /* EditToDo */ = {
+			isa = PBXGroup;
+			children = (
+				155FD50E2B9DF6A100604788 /* View */,
+				155FD50F2B9DF6AA00604788 /* ViewModel */,
+			);
+			path = EditToDo;
+			sourceTree = "<group>";
+		};
+		155FD50B2B9DF67600604788 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15BCA73F2B974D71006A58C0 /* ToDoListViewController.swift */,
+				15FEC2FC2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		155FD50C2B9DF67E00604788 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15FEC2EF2B978E7B00BD8597 /* ToDoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		155FD50D2B9DF68600604788 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				155FD50B2B9DF67600604788 /* View */,
+				155FD50C2B9DF67E00604788 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		155FD50E2B9DF6A100604788 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		155FD50F2B9DF6AA00604788 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		155FD5102B9DF6D500604788 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				15BCA73B2B974D71006A58C0 /* AppDelegate.swift */,
+				15BCA73D2B974D71006A58C0 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		15BCA72F2B974D71006A58C0 = {
 			isa = PBXGroup;
 			children = (
@@ -145,17 +222,12 @@
 		15BCA73A2B974D71006A58C0 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
-				15BCA73B2B974D71006A58C0 /* AppDelegate.swift */,
-				15BCA73D2B974D71006A58C0 /* SceneDelegate.swift */,
-				15BCA73F2B974D71006A58C0 /* ToDoListViewController.swift */,
+				155FD5102B9DF6D500604788 /* Application */,
+				155FD5082B9DF63800604788 /* Modules */,
 				15BCA7412B974D71006A58C0 /* Main.storyboard */,
 				15BCA7442B974D73006A58C0 /* Assets.xcassets */,
 				15BCA7462B974D73006A58C0 /* LaunchScreen.storyboard */,
 				15BCA7492B974D73006A58C0 /* Info.plist */,
-				15FEC2EF2B978E7B00BD8597 /* ToDoViewModel.swift */,
-				15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */,
-				15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */,
-				15FEC2FC2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";

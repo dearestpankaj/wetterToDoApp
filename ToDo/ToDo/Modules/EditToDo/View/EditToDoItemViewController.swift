@@ -17,23 +17,11 @@ class EditToDoItemViewController: UIViewController {
     let selectedNode: TreeNode?
     let isEditingNode: Bool!
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveNode))
-        
-        guard let selectedNode else {
-            return
-        }
-        titleLabel.text = selectedNode.title
-        if isEditingNode {
-            taskTextField.text = selectedNode.title
-        }
-    }
+    private lazy var saveButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveNode))
+        button.isEnabled = false
+        return button
+    }()
     
     init?(coder: NSCoder, viewModel: EditToDoItemViewModel!, selectedNode: TreeNode? = nil, isEditingNode: Bool = false) {
         self.viewModel = viewModel
@@ -41,6 +29,31 @@ class EditToDoItemViewController: UIViewController {
         self.isEditingNode = isEditingNode
         
         super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.navigationItem.rightBarButtonItem = saveButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+
+        guard let selectedNode else {
+            return
+        }
+        
+        titleLabel.text = selectedNode.title
+        if isEditingNode {
+            taskTextField.text = selectedNode.title
+        }
+        
+        guard let text = taskTextField.text else {
+            return
+        }
+        saveButton.isEnabled = true
     }
     
     @objc func saveNode(sender: UIBarButtonItem) {
@@ -53,5 +66,11 @@ class EditToDoItemViewController: UIViewController {
             viewModel.addItem(parent: selectedNode, text: text)
         }
         navigationController?.popViewController(animated: true)
+    }
+}
+extension EditToDoItemViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        saveButton.isEnabled = (!string.isEmpty || range.length < (textField.text ?? "").count)
+        return true
     }
 }
