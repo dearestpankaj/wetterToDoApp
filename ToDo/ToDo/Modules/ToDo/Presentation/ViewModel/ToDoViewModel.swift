@@ -47,7 +47,7 @@ class ToDoViewModel: ToDoViewModelProtocol {
         let node = getToDoListItem(index: index)
         if let indexes = toDoListService.remove(node) as? [Int] {
             getToDoList()
-            let indexTobDeleted = indexes.map{ IndexPath(row: $0, section: 0) }
+            let indexTobDeleted = indexes.sorted { $0 > $1 }.map{ IndexPath(row: $0, section: 0) }
             completion(indexTobDeleted)
         }
     }

@@ -79,7 +79,6 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
             }
             self.viewModel.removeNodeAtIndex(index: indexPath.row) { indexes in
                 self.todoTableView.deleteRows(at: indexes, with: .automatic)
-                self.todoTableView.reloadData()
                 completion(true)
             }
         }
