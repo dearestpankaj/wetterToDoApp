@@ -31,7 +31,7 @@ class ToDoListViewController: UIViewController {
     }
     
     @objc func reorderTapped(sender: UIBarButtonItem) {
-        todoTableView.isEditing = !todoTableView.isEditing
+        todoTableView.setEditing(!todoTableView.isEditing, animated: true)
     }
     
     func showTodoItemViewController(node: TreeNode? = nil, isEditingNode: Bool = false) {
@@ -95,6 +95,26 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
             self.showTodoItemViewController(node: listItem)
             completion(true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        false
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        viewModel.moveRowAt(sourceIndexPath: sourceIndexPath, to: destinationIndexPath)
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if !viewModel.rowsOrderAllowed(sourceIndexPath: sourceIndexPath, to: proposedDestinationIndexPath){
+            return sourceIndexPath
+        }
+        return proposedDestinationIndexPath
     }
 }
 extension ToDoListViewController: ToDoListItemTableViewCellDelegate {

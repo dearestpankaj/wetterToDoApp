@@ -128,8 +128,8 @@
 
 - (TreeNode *) getParentTreeNode:(TreeNode *) node {
     NSString *nodeIdentifier = nil;
-    if (node.identifier.length < 2) {
-        nodeIdentifier = node.identifier;
+    if (![node.identifier containsString:@"."]) {
+        return  nil;
     } else {
         nodeIdentifier = [node.identifier substringToIndex: node.identifier.length-2];
     }
@@ -176,6 +176,24 @@
         }
     }
     return  nodeArray;
+}
+
+-(void)moveNodePostion:(TreeNode *) sourceNode :(TreeNode *) destinationNode {
+    TreeNode *sourceParent = [self getParentTreeNode:sourceNode];
+    TreeNode *destinationParent = [self getParentTreeNode:destinationNode];
+    
+    if (sourceParent == nil && destinationParent == nil) {
+        NSInteger destinationIndex = [_todoList indexOfObject:destinationNode];
+        NSInteger sourceIndex = [_todoList indexOfObject:sourceNode];
+        
+        [_todoList exchangeObjectAtIndex:destinationIndex withObjectAtIndex:sourceIndex];
+    } else {
+        NSInteger destinationIndex = [destinationParent.children indexOfObject:destinationNode];
+        NSInteger sourceIndex = [sourceParent.children indexOfObject:sourceNode];
+        
+        [sourceParent.children exchangeObjectAtIndex:destinationIndex withObjectAtIndex:sourceIndex];
+    }
+    [self saveToDoListToLocalDataStore];
 }
 
 - (void)dealloc {

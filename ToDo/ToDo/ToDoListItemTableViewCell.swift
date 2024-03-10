@@ -17,6 +17,7 @@ class ToDoListItemTableViewCell: UITableViewCell {
     @IBOutlet weak var todoItemLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var completionButton: UIButton!
     var myNode: TreeNode!
+    let subtaskIndentation = 20
     
     weak var delegate: ToDoListItemTableViewCellDelegate?
     
@@ -47,7 +48,7 @@ class ToDoListItemTableViewCell: UITableViewCell {
     
     func setLeadingConstraint(title: String) {
         let arr = title.components(separatedBy: ".")
-        todoItemLeadingConstraint.constant = CGFloat(10 * arr.count)
+        todoItemLeadingConstraint.constant = CGFloat(subtaskIndentation * arr.count)
     }
     
     @IBAction func taskCompletionAction(_ sender: UIButton) {

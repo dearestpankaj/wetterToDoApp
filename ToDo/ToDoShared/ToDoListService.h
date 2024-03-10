@@ -12,10 +12,15 @@
 
 @property(nonatomic, strong) NSMutableArray<TreeNode *> *todoList;
 
-- (NSMutableArray *) getFlattenedNodes;
+-(NSMutableArray *)getFlattenedNodes;
+-(TreeNode *)getParentTreeNode:(TreeNode *)node;
 
-- (void)saveNodeWithParent:(TreeNode *)parent andChild:(TreeNode *)child;
-- (void)updateTodoItem:(TreeNode *)node andText:(NSString *)text;
-- (void)setNodeAndChildrenCompletion:(TreeNode *) node :(bool) isComplete;
-- (NSMutableArray *)remove:(TreeNode *) treeNode;
+-(void)saveNodeWithParent:(TreeNode *)parent andChild:(TreeNode *)child;
+
+-(void)updateTodoItem:(TreeNode *)node andText:(NSString *)text;
+-(void)setNodeAndChildrenCompletion:(TreeNode *)node :(bool)isComplete;
+-(void)moveNodePostion:(TreeNode *) sourceNode :(TreeNode *) destinationNode;
+
+-(NSMutableArray *)remove:(TreeNode *)treeNode;
+
 @end

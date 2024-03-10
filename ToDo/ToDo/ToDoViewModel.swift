@@ -55,4 +55,34 @@ class ToDoViewModel {
             completion(indexTobDeleted)
         }
     }
+    
+    func moveRowAt(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard let sourceNode = getToDoListItem(index: sourceIndexPath.row),
+              let destinationNode = getToDoListItem(index: destinationIndexPath.row) else {
+            return
+        }
+        toDoListService.moveNodePostion(sourceNode, destinationNode)
+        getToDoList()
+    }
+    
+    //only allow reorder if it is done at same level
+    func rowsOrderAllowed(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) -> Bool {
+        guard let sourceRowIdentifier = todoList[sourceIndexPath.row].identifier else {
+            return false
+        }
+        guard let destinationRowIdentifier = todoList[destinationIndexPath.row].identifier else {
+            return false
+        }
+        if isRootNode(identifier: sourceRowIdentifier) && isRootNode(identifier: destinationRowIdentifier) {
+            return true//both root nodes
+        }
+        if sourceRowIdentifier.dropLast(2) == destinationRowIdentifier.dropLast(2) {
+            return true//source and destination are at same level
+        }
+        return false
+    }
+    
+    func isRootNode(identifier: String) -> Bool {
+        !identifier.contains(".")
+    }
 }
