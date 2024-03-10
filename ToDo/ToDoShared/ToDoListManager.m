@@ -16,26 +16,52 @@
     if (self) {
         _todoList = [[NSMutableArray alloc] init];
         [self getToDoListFromDataSource];
-        _flatTodoList = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
+- (void) getToDoListFromDataSource {
+    ToDoListRepository *repository = [[ToDoListRepository alloc] init];
+    _todoList = [repository getNodeList];
+    [repository release];
+}
+
+/// Get list of TreeNode flattened to an array so that it can be easily displayed in UITableView
+- (NSMutableArray *) getFlattenedNodes {
+    return [self flattenedNodeArray:_todoList];
+}
+
+- (NSMutableArray *) flattenedNodeArray: (NSMutableArray*) array {
+    NSMutableArray *flatTodoList = [[[NSMutableArray alloc] init] autorelease];
+    for (TreeNode *element in array) {
+        [flatTodoList addObject:element];
+        
+        if ([element children] != nil) {
+            NSMutableArray *array1 = [self flattenedNodeArray:[element children]];
+            for (TreeNode *element in array1) {
+                [flatTodoList addObject:element];
+            }
+        }
+    }
+    return flatTodoList;
+}
+
+///Save Node, if there is no parent it means the child should be added as root to root array
 - (void)saveNodeWithParent:(TreeNode *)parent andChild:(TreeNode *)child {
     if (parent == nil) {
         [_todoList addObject:child];
     } else {
         [parent.children addObject:child];
     }
-    [self saveNodeToLocalDataStore];
+    [self saveToDoListToLocalDataStore];
 }
 
-- (void)updateTodoItemWithNode:(TreeNode *)node andText:(NSString *)text {
+- (void)updateTodoItem:(TreeNode *)node andText:(NSString *)text {
     node.title = text;
-    [self saveNodeToLocalDataStore];
+    [self saveToDoListToLocalDataStore];
 }
 
--(void)saveNodeToLocalDataStore {
+-(void)saveToDoListToLocalDataStore {
     ToDoListRepository *repository = [[ToDoListRepository alloc] init];
     [self addIdentifierForNodes:_todoList :nil];
     [repository saveNodeList:_todoList];
@@ -63,37 +89,8 @@
     return todoList;
 }
 
-- (void) getToDoListFromDataSource {
-    ToDoListRepository *repository = [[ToDoListRepository alloc] init];
-    _todoList = [repository getNodeList];
-    [repository release];
-}
-
-- (NSMutableArray *) getToDoList {
-    return _todoList;
-}
-
-- (NSMutableArray *) getFlattenedNodes {
-    return [self flattenedNodeArray:[self getToDoList]];
-}
-
 - (NSMutableArray *) getFlattenedChildren:(TreeNode *) node {
     return [self flattenedNodeArray: node.children];
-}
-
-- (NSMutableArray *) flattenedNodeArray: (NSMutableArray*) array {
-    NSMutableArray *flatTodoList = [[[NSMutableArray alloc] init] autorelease];
-    for (TreeNode *element in array) {
-        [flatTodoList addObject:element];
-        
-        if ([element children] != nil) {
-            NSMutableArray *array1 = [self flattenedNodeArray:[element children]];
-            for (TreeNode *element in array1) {
-                [flatTodoList addObject:element];
-            }
-        }
-    }
-    return flatTodoList;
 }
 
 - (void) setNodeAndChildrenCompletion: (TreeNode *) node :(bool) isComplete {
@@ -166,7 +163,7 @@
             [indexTobDeleted addObject:[NSNumber numberWithInt:idx]];
         }
     }];
-    [self saveNodeToLocalDataStore];
+    [self saveToDoListToLocalDataStore];
     [self getToDoListFromDataSource];
     return indexTobDeleted;
 }
@@ -186,7 +183,6 @@
 
 - (void)dealloc {
     [_todoList release];
-    [_flatTodoList release];
     [super dealloc];
 }
 

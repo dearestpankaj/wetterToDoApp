@@ -22,6 +22,6 @@ class EditToDoItemViewModel {
     }
     
     func update(for node: TreeNode?, text: String) {
-        toDoListManager.updateTodoItem(with: node, andText: text)
+        toDoListManager.updateTodoItem(node, andText: text)
     }
 }

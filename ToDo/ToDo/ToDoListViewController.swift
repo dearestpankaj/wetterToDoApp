@@ -9,7 +9,7 @@ import UIKit
 import ToDoShared
 
 class ToDoListViewController: UIViewController {
-
+    
     @IBOutlet weak var todoTableView: UITableView!
     let viewModel = ToDoViewModel(toDoListManager: ToDoListManager())
     
@@ -25,7 +25,7 @@ class ToDoListViewController: UIViewController {
         viewModel.getToDoList()
         todoTableView.reloadData()
     }
-
+    
     @objc func addTapped(sender: UIBarButtonItem) {
         showTodoItemViewController()
     }
@@ -63,31 +63,40 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let addSubTask = UIContextualAction(style: .normal, title: "Add Subtask") { [weak self, indexPath] (action, view, completionHandler) in
-          if let self = self {
-              let listItem = viewModel.getToDoListItem(index: indexPath.row)
-              self.showTodoItemViewController(node: listItem)
-            completionHandler(true)
-           }
-           completionHandler(false)
-        }
-        
-        let deleteSubTask = UIContextualAction(style: .destructive, title: "Delete") { [weak self, indexPath] (action, view, completionHandler) in
-          if let self = self {
-              viewModel.removeNodeAtIndex(index: indexPath.row) { indexes in
-                  tableView.deleteRows(at: indexes, with: .automatic)
-                  self.todoTableView.reloadData()
-              }
-              completionHandler(true)
-           }
-           completionHandler(false)
-        }
-        
-        let swipeActions = UISwipeActionsConfiguration(actions: [deleteSubTask, addSubTask])
+        let swipeActions = UISwipeActionsConfiguration(actions: [
+            deleteContextualAction(forRowAt: indexPath),
+            addSubtaskContextualAction(forRowAt: indexPath),
+        ]
+        )
         return swipeActions
     }
+    
+    private func deleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completion) in
+            guard let self = self else {
+                completion(false)
+                return
+            }
+            self.viewModel.removeNodeAtIndex(index: indexPath.row) { indexes in
+                self.todoTableView.deleteRows(at: indexes, with: .automatic)
+                self.todoTableView.reloadData()
+                completion(true)
+            }
+        }
+    }
+    
+    private func addSubtaskContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .normal, title: "Add Subtask") { [weak self] (_, _, completion) in
+            guard let self = self else {
+                completion(false)
+                return
+            }
+            let listItem = viewModel.getToDoListItem(index: indexPath.row)
+            self.showTodoItemViewController(node: listItem)
+            completion(true)
+        }
+    }
 }
-
 extension ToDoListViewController: ToDoListItemTableViewCellDelegate {
     func nodeCompletion(node: TreeNode, isComplete: Bool) {
         viewModel.setNodeCompletion(node: node, isComplete: isComplete)
