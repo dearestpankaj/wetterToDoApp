@@ -26,6 +26,8 @@
 		15FEC2F92B9799AD00BD8597 /* EditToDoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */; };
 		15FEC2FB2B97C97E00BD8597 /* EditToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */; };
 		15FEC2FD2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2FC2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift */; };
+		15FEC2FF2B9C8C2000BD8597 /* ToDoListRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2FE2B9C8C2000BD8597 /* ToDoListRepository.m */; };
+		15FEC3032B9C8E3A00BD8597 /* ToDoListJSONDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC3022B9C8E3A00BD8597 /* ToDoListJSONDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,10 @@
 		15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoItemViewController.swift; sourceTree = "<group>"; };
 		15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoItemViewModel.swift; sourceTree = "<group>"; };
 		15FEC2FC2B98DFC500BD8597 /* ToDoListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemTableViewCell.swift; sourceTree = "<group>"; };
+		15FEC2FE2B9C8C2000BD8597 /* ToDoListRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListRepository.m; sourceTree = "<group>"; };
+		15FEC3002B9C8C2E00BD8597 /* ToDoListRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoListRepository.h; sourceTree = "<group>"; };
+		15FEC3012B9C8DEE00BD8597 /* ToDoListJSONDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoListJSONDataSource.h; sourceTree = "<group>"; };
+		15FEC3022B9C8E3A00BD8597 /* ToDoListJSONDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListJSONDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,10 @@
 				15BCA7702B97726F006A58C0 /* TreeNode.m */,
 				15FEC2EE2B9782E300BD8597 /* ToDoListManager.h */,
 				15FEC2EB2B9781A600BD8597 /* ToDoListManager.m */,
+				15FEC3002B9C8C2E00BD8597 /* ToDoListRepository.h */,
+				15FEC2FE2B9C8C2000BD8597 /* ToDoListRepository.m */,
+				15FEC3012B9C8DEE00BD8597 /* ToDoListJSONDataSource.h */,
+				15FEC3022B9C8E3A00BD8597 /* ToDoListJSONDataSource.m */,
 			);
 			path = ToDoShared;
 			sourceTree = "<group>";
@@ -336,6 +346,8 @@
 			files = (
 				15BCA7712B97726F006A58C0 /* TreeNode.m in Sources */,
 				15FEC2EC2B9781A600BD8597 /* ToDoListManager.m in Sources */,
+				15FEC3032B9C8E3A00BD8597 /* ToDoListJSONDataSource.m in Sources */,
+				15FEC2FF2B9C8C2000BD8597 /* ToDoListRepository.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

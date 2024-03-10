@@ -12,7 +12,7 @@
 @property(nonatomic, strong) NSString *identifier;
 @property(nonatomic, assign) bool isCompleted;
 
-- (instancetype)initWithValue:(NSString *)title :(NSString *)number;
+- (instancetype)initWithValue:(NSString *)title;
 - (void)addChild:(TreeNode *)child;
 
 @end

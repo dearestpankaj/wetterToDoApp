@@ -49,15 +49,10 @@ class ToDoViewModel {
     
     func removeNodeAtIndex(index: Int, completion: (_ indexes: [IndexPath]) -> Void) {
         let node = getToDoListItem(index: index)
-        toDoListManager.remove(node)
-        let todoItemsBeforeDeletion = todoList
-        getToDoList()
-        var indexTobDeleted = [IndexPath]()
-        for (index, node) in todoItemsBeforeDeletion.enumerated() {
-            if !todoList.contains(node) {
-                indexTobDeleted.append(IndexPath(row: index, section: 0))
-            }
+        if let indexes = toDoListManager.remove(node) as? [Int] {
+            getToDoList()
+            let indexTobDeleted = indexes.map{ IndexPath(row: $0, section: 0) }
+            completion(indexTobDeleted)
         }
-        completion(indexTobDeleted)
     }
 }

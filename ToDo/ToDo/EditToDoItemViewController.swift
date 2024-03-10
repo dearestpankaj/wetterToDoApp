@@ -15,7 +15,7 @@ class EditToDoItemViewController: UIViewController {
     
     let viewModel: EditToDoItemViewModel!
     let selectedNode: TreeNode?
-    let isSubTask: Bool!
+    let isEditingNode: Bool!
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -30,16 +30,15 @@ class EditToDoItemViewController: UIViewController {
             return
         }
         titleLabel.text = selectedNode.title
-        // FIXME: something is not right here
-        if !isSubTask {
+        if isEditingNode {
             taskTextField.text = selectedNode.title
         }
     }
     
-    init?(coder: NSCoder, viewModel: EditToDoItemViewModel!, selectedNode: TreeNode? = nil, isSubTask: Bool = false) {
+    init?(coder: NSCoder, viewModel: EditToDoItemViewModel!, selectedNode: TreeNode? = nil, isEditingNode: Bool = false) {
         self.viewModel = viewModel
         self.selectedNode = selectedNode
-        self.isSubTask = isSubTask
+        self.isEditingNode = isEditingNode
         
         super.init(coder: coder)
     }
@@ -48,19 +47,10 @@ class EditToDoItemViewController: UIViewController {
         guard let text = taskTextField.text else {
             return
         }
-        if selectedNode == nil {
-            viewModel.addItem(text: text)
+        if isEditingNode {
+            viewModel.update(for: selectedNode, text: text)
         } else {
-            if isSubTask {
-                let childrenCount = String((selectedNode?.children.count ?? 0) + 1)
-                if let nodeNumber = selectedNode?.identifier {
-                    let node  = TreeNode(value: text, "\(nodeNumber).\(childrenCount)")
-                    selectedNode?.children.add(node)
-                }
-                
-            } else {
-                selectedNode?.title = text
-            }
+            viewModel.addItem(parent: selectedNode, text: text)
         }
         navigationController?.popViewController(animated: true)
     }

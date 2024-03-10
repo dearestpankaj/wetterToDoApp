@@ -16,9 +16,12 @@ class EditToDoItemViewModel {
         self.toDoListManager = toDoListManager
     }
     
-    func addItem(text: String) {
-        let itemCount = toDoListManager.todoList.count
-        let node = TreeNode(value: text, String(itemCount + 1))
-        toDoListManager.addChild(node)
+    func addItem(parent node: TreeNode?, text: String) {
+        let childNode = TreeNode(value: text)
+        toDoListManager.saveNode(withParent: node, andChild: childNode)
+    }
+    
+    func update(for node: TreeNode?, text: String) {
+        toDoListManager.updateTodoItem(with: node, andText: text)
     }
 }

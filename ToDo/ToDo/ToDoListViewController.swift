@@ -34,11 +34,11 @@ class ToDoListViewController: UIViewController {
         todoTableView.isEditing = !todoTableView.isEditing
     }
     
-    func showTodoItemViewController(node: TreeNode? = nil, isSubTask: Bool = false) {
+    func showTodoItemViewController(node: TreeNode? = nil, isEditingNode: Bool = false) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: String(describing: EditToDoItemViewController.self)) { coder in
             
-            return EditToDoItemViewController(coder: coder, viewModel: EditToDoItemViewModel(toDoListManager: self.viewModel.toDoListManager), selectedNode: node, isSubTask: isSubTask)
+            return EditToDoItemViewController(coder: coder, viewModel: EditToDoItemViewModel(toDoListManager: self.viewModel.toDoListManager), selectedNode: node, isEditingNode: isEditingNode)
         }
         show(viewController, sender: self)
     }
@@ -59,15 +59,14 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showTodoItemViewController(node: viewModel.getToDoListItem(index: indexPath.row))
+        showTodoItemViewController(node: viewModel.getToDoListItem(index: indexPath.row), isEditingNode: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let addSubTask = UIContextualAction(style: .normal, title: "Add Subtask") { [weak self, indexPath] (action, view, completionHandler) in
           if let self = self {
               let listItem = viewModel.getToDoListItem(index: indexPath.row)
-              self.showTodoItemViewController(node: listItem, isSubTask: true)
-              
+              self.showTodoItemViewController(node: listItem)
             completionHandler(true)
            }
            completionHandler(false)
@@ -77,6 +76,7 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
           if let self = self {
               viewModel.removeNodeAtIndex(index: indexPath.row) { indexes in
                   tableView.deleteRows(at: indexes, with: .automatic)
+                  self.todoTableView.reloadData()
               }
               completionHandler(true)
            }
