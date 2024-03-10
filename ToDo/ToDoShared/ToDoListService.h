@@ -9,7 +9,6 @@
 
 @interface ToDoListService : NSObject
 
-
 @property(nonatomic, strong) NSMutableArray<TreeNode *> *todoList;
 
 -(NSMutableArray *)getFlattenedNodes;
@@ -19,7 +18,7 @@
 
 -(void)updateTodoItem:(TreeNode *)node andText:(NSString *)text;
 -(void)setNodeAndChildrenCompletion:(TreeNode *)node :(bool)isComplete;
--(void)moveNodePostion:(TreeNode *) sourceNode :(TreeNode *) destinationNode;
+-(void)moveNodePostion:(TreeNode *)sourceNode :(TreeNode *) destinationNode;
 
 -(NSMutableArray *)remove:(TreeNode *)treeNode;
 

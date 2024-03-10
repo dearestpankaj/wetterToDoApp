@@ -8,7 +8,16 @@
 import Foundation
 import ToDoShared
 
-class ToDoViewModel {
+protocol ToDoViewModelProtocol {
+    func getToDoList()
+    func getToDoListItem(index: Int) -> TreeNode?
+    func setNodeCompletion(node: TreeNode, isComplete: Bool)
+    func removeNodeAtIndex(index: Int, completion: (_ indexes: [IndexPath]) -> Void)
+    func moveRowAt(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
+    func rowsOrderAllowed(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) -> Bool
+}
+
+class ToDoViewModel: ToDoViewModelProtocol {
     var todoList = [TreeNode]()
     let toDoListService: ToDoListService
     
@@ -24,19 +33,6 @@ class ToDoViewModel {
     
     func getToDoListCount() -> Int {
         todoList.count
-    }
-    
-    func countItemsInList(list: [TreeNode]) -> Int {
-        var count = 0
-
-        for item in list {
-            count += 1
-            if let children = item.children as? [TreeNode] {
-                count += countItemsInList(list: children)
-            }
-            
-        }
-        return count
     }
     
     func getToDoListItem(index: Int) -> TreeNode? {
@@ -67,22 +63,22 @@ class ToDoViewModel {
     
     //only allow reorder if it is done at same level
     func rowsOrderAllowed(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) -> Bool {
-        guard let sourceRowIdentifier = todoList[sourceIndexPath.row].identifier else {
+        guard let sourceRowIdentifier = todoList[sourceIndexPath.row].identifier,
+              let destinationRowIdentifier = todoList[destinationIndexPath.row].identifier else {
             return false
         }
-        guard let destinationRowIdentifier = todoList[destinationIndexPath.row].identifier else {
-            return false
-        }
+        
         if isRootNode(identifier: sourceRowIdentifier) && isRootNode(identifier: destinationRowIdentifier) {
             return true//both root nodes
         }
+        
         if sourceRowIdentifier.dropLast(2) == destinationRowIdentifier.dropLast(2) {
             return true//source and destination are at same level
         }
         return false
     }
     
-    func isRootNode(identifier: String) -> Bool {
+    private func isRootNode(identifier: String) -> Bool {
         !identifier.contains(".")
     }
 }

@@ -22,6 +22,7 @@ class ToDoListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         viewModel.getToDoList()
         todoTableView.reloadData()
     }
@@ -37,7 +38,6 @@ class ToDoListViewController: UIViewController {
     func showTodoItemViewController(node: TreeNode? = nil, isEditingNode: Bool = false) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: String(describing: EditToDoItemViewController.self)) { coder in
-            
             return EditToDoItemViewController(coder: coder, viewModel: EditToDoItemViewModel(toDoListService: self.viewModel.toDoListService), selectedNode: node, isEditingNode: isEditingNode)
         }
         show(viewController, sender: self)
