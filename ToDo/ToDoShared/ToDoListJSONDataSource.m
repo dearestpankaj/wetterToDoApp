@@ -43,9 +43,7 @@ NSString const *keyChildren = @"children";
 }
 
 - (void)writeStringToFile:(NSString*)aString {
-    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString* fileAtPath = [filePath stringByAppendingPathComponent:jsonFileName];
-
+    NSString *fileAtPath = [self jsonFilePath];
     if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
         [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:nil attributes:nil];
     }
@@ -63,9 +61,13 @@ NSString const *keyChildren = @"children";
 }
 
 - (NSString*) readStringFromFile {
+    return [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:[self jsonFilePath]] encoding:NSUTF8StringEncoding];
+}
+
+-(NSString *) jsonFilePath {
     NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString* fileAtPath = [filePath stringByAppendingPathComponent:jsonFileName];
-    return [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:fileAtPath] encoding:NSUTF8StringEncoding];
+    return fileAtPath;
 }
 
 -(NSMutableArray *) convertJSONObjectsToNodes: (NSMutableArray *) jsonObjectArray {

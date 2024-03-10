@@ -11,7 +11,7 @@ import ToDoShared
 class ToDoListViewController: UIViewController {
     
     @IBOutlet weak var todoTableView: UITableView!
-    let viewModel = ToDoViewModel(toDoListManager: ToDoListManager())
+    let viewModel = ToDoViewModel(toDoListService: ToDoListService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ToDoListViewController: UIViewController {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: String(describing: EditToDoItemViewController.self)) { coder in
             
-            return EditToDoItemViewController(coder: coder, viewModel: EditToDoItemViewModel(toDoListManager: self.viewModel.toDoListManager), selectedNode: node, isEditingNode: isEditingNode)
+            return EditToDoItemViewController(coder: coder, viewModel: EditToDoItemViewModel(toDoListService: self.viewModel.toDoListService), selectedNode: node, isEditingNode: isEditingNode)
         }
         show(viewController, sender: self)
     }
@@ -50,7 +50,7 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoListItemTableViewCell") as? ToDoListItemTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoListItemTableViewCell.reuseIdentifier) as? ToDoListItemTableViewCell else {
             return UITableViewCell()
         }
         cell.delegate = self

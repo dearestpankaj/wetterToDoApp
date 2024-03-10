@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ToDoListManager.h"
+#import "ToDoListService.h"
 #import "ToDoListRepository.h"
 
-@implementation ToDoListManager
+@implementation ToDoListService
 
 - (instancetype) init {
     self = [super init];
@@ -31,14 +31,14 @@
     return [self flattenedNodeArray:_todoList];
 }
 
-- (NSMutableArray *) flattenedNodeArray: (NSMutableArray*) array {
+- (NSMutableArray *) flattenedNodeArray: (NSMutableArray*) nodeArray {
     NSMutableArray *flatTodoList = [[[NSMutableArray alloc] init] autorelease];
-    for (TreeNode *element in array) {
+    for (TreeNode *element in nodeArray) {
         [flatTodoList addObject:element];
         
         if ([element children] != nil) {
-            NSMutableArray *array1 = [self flattenedNodeArray:[element children]];
-            for (TreeNode *element in array1) {
+            NSMutableArray *nodeChildrenArray = [self flattenedNodeArray:[element children]];
+            for (TreeNode *element in nodeChildrenArray) {
                 [flatTodoList addObject:element];
             }
         }
@@ -86,7 +86,7 @@
             }];
         }
     }];
-    return todoList;
+    return nil;
 }
 
 - (NSMutableArray *) getFlattenedChildren:(TreeNode *) node {
@@ -106,7 +106,6 @@
     if (!node.isCompleted) {
         [self markParentNodeIncompleteForFirstIncompleteChildren:node];
     }
-//    [self saveNodeToLocalDataStore];
 }
 
 - (void) markParentNodeIncompleteForFirstIncompleteChildren: (TreeNode *) node {

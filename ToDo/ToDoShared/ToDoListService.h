@@ -7,7 +7,7 @@
 
 #import <ToDoShared/TreeNode.h>
 
-@interface ToDoListManager : NSObject
+@interface ToDoListService : NSObject
 
 
 @property(nonatomic, strong) NSMutableArray<TreeNode *> *todoList;

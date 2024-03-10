@@ -19,9 +19,9 @@
 		15BCA7672B974DD7006A58C0 /* ToDoShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BCA7542B974DD7006A58C0 /* ToDoShared.framework */; };
 		15BCA7682B974DD7006A58C0 /* ToDoShared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15BCA7542B974DD7006A58C0 /* ToDoShared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15BCA7712B97726F006A58C0 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 15BCA7702B97726F006A58C0 /* TreeNode.m */; };
-		15FEC2EC2B9781A600BD8597 /* ToDoListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2EB2B9781A600BD8597 /* ToDoListManager.m */; };
+		15FEC2EC2B9781A600BD8597 /* ToDoListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2EB2B9781A600BD8597 /* ToDoListService.m */; };
 		15FEC2F02B978E7B00BD8597 /* ToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2EF2B978E7B00BD8597 /* ToDoViewModel.swift */; };
-		15FEC2F22B9792B500BD8597 /* ToDoListManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FEC2EE2B9782E300BD8597 /* ToDoListManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15FEC2F22B9792B500BD8597 /* ToDoListService.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FEC2EE2B9782E300BD8597 /* ToDoListService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15FEC2F32B9792E700BD8597 /* TreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FEC2ED2B97828E00BD8597 /* TreeNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15FEC2F92B9799AD00BD8597 /* EditToDoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */; };
 		15FEC2FB2B97C97E00BD8597 /* EditToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */; };
@@ -82,9 +82,9 @@
 		15BCA75B2B974DD7006A58C0 /* ToDoSharedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoSharedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BCA7622B974DD7006A58C0 /* ToDoSharedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoSharedTests.m; sourceTree = "<group>"; };
 		15BCA7702B97726F006A58C0 /* TreeNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeNode.m; sourceTree = "<group>"; };
-		15FEC2EB2B9781A600BD8597 /* ToDoListManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListManager.m; sourceTree = "<group>"; };
+		15FEC2EB2B9781A600BD8597 /* ToDoListService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListService.m; sourceTree = "<group>"; };
 		15FEC2ED2B97828E00BD8597 /* TreeNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeNode.h; sourceTree = "<group>"; };
-		15FEC2EE2B9782E300BD8597 /* ToDoListManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoListManager.h; sourceTree = "<group>"; };
+		15FEC2EE2B9782E300BD8597 /* ToDoListService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoListService.h; sourceTree = "<group>"; };
 		15FEC2EF2B978E7B00BD8597 /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
 		15FEC2F82B9799AD00BD8597 /* EditToDoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoItemViewController.swift; sourceTree = "<group>"; };
 		15FEC2FA2B97C97E00BD8597 /* EditToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoItemViewModel.swift; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 				15BCA7562B974DD7006A58C0 /* ToDoShared.h */,
 				15FEC2ED2B97828E00BD8597 /* TreeNode.h */,
 				15BCA7702B97726F006A58C0 /* TreeNode.m */,
-				15FEC2EE2B9782E300BD8597 /* ToDoListManager.h */,
-				15FEC2EB2B9781A600BD8597 /* ToDoListManager.m */,
+				15FEC2EE2B9782E300BD8597 /* ToDoListService.h */,
+				15FEC2EB2B9781A600BD8597 /* ToDoListService.m */,
 				15FEC3002B9C8C2E00BD8597 /* ToDoListRepository.h */,
 				15FEC2FE2B9C8C2000BD8597 /* ToDoListRepository.m */,
 				15FEC3012B9C8DEE00BD8597 /* ToDoListJSONDataSource.h */,
@@ -191,7 +191,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15FEC2F22B9792B500BD8597 /* ToDoListManager.h in Headers */,
+				15FEC2F22B9792B500BD8597 /* ToDoListService.h in Headers */,
 				15FEC2F32B9792E700BD8597 /* TreeNode.h in Headers */,
 				15BCA7642B974DD7006A58C0 /* ToDoShared.h in Headers */,
 			);
@@ -345,7 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BCA7712B97726F006A58C0 /* TreeNode.m in Sources */,
-				15FEC2EC2B9781A600BD8597 /* ToDoListManager.m in Sources */,
+				15FEC2EC2B9781A600BD8597 /* ToDoListService.m in Sources */,
 				15FEC3032B9C8E3A00BD8597 /* ToDoListJSONDataSource.m in Sources */,
 				15FEC2FF2B9C8C2000BD8597 /* ToDoListRepository.m in Sources */,
 			);

@@ -20,6 +20,8 @@ class ToDoListItemTableViewCell: UITableViewCell {
     
     weak var delegate: ToDoListItemTableViewCellDelegate?
     
+    static var reuseIdentifier = "ToDoListItemTableViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         completionButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)

@@ -10,18 +10,18 @@ import ToDoShared
 
 class EditToDoItemViewModel {
     
-    let toDoListManager: ToDoListManager
+    let toDoListService: ToDoListService
     
-    init(toDoListManager: ToDoListManager) {
-        self.toDoListManager = toDoListManager
+    init(toDoListService: ToDoListService) {
+        self.toDoListService = toDoListService
     }
     
     func addItem(parent node: TreeNode?, text: String) {
         let childNode = TreeNode(value: text)
-        toDoListManager.saveNode(withParent: node, andChild: childNode)
+        toDoListService.saveNode(withParent: node, andChild: childNode)
     }
     
     func update(for node: TreeNode?, text: String) {
-        toDoListManager.updateTodoItem(node, andText: text)
+        toDoListService.updateTodoItem(node, andText: text)
     }
 }

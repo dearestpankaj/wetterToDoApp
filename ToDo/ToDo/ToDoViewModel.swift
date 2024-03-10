@@ -10,14 +10,14 @@ import ToDoShared
 
 class ToDoViewModel {
     var todoList = [TreeNode]()
-    let toDoListManager: ToDoListManager
+    let toDoListService: ToDoListService
     
-    init(toDoListManager: ToDoListManager) {
-        self.toDoListManager = toDoListManager
+    init(toDoListService: ToDoListService) {
+        self.toDoListService = toDoListService
     }
     
     func getToDoList() {
-        if let list = toDoListManager.getFlattenedNodes() as? [TreeNode] {
+        if let list = toDoListService.getFlattenedNodes() as? [TreeNode] {
             todoList = list
         }
     }
@@ -44,12 +44,12 @@ class ToDoViewModel {
     }
     
     func setNodeCompletion(node: TreeNode, isComplete: Bool) {
-        toDoListManager.setNodeAndChildrenCompletion(node, isComplete)
+        toDoListService.setNodeAndChildrenCompletion(node, isComplete)
     }
     
     func removeNodeAtIndex(index: Int, completion: (_ indexes: [IndexPath]) -> Void) {
         let node = getToDoListItem(index: index)
-        if let indexes = toDoListManager.remove(node) as? [Int] {
+        if let indexes = toDoListService.remove(node) as? [Int] {
             getToDoList()
             let indexTobDeleted = indexes.map{ IndexPath(row: $0, section: 0) }
             completion(indexTobDeleted)
