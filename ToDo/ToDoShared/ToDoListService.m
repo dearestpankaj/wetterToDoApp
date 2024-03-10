@@ -69,8 +69,6 @@
 }
 
 - (NSMutableArray *)addIdentifierForNodes:(NSMutableArray *) array :(NSString *)parentIdentifier {
-    NSMutableArray *todoList = [[[NSMutableArray alloc] init] autorelease];
-    
     [array enumerateObjectsUsingBlock:^(TreeNode *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *identifier;
         if ([parentIdentifier length] > 0) {
