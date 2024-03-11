@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		155FD51A2B9E402600604788 /* ToDoListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155FD5192B9E402600604788 /* ToDoListServiceTests.swift */; };
+		155FD51B2B9E463800604788 /* ToDoListRepository.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FEC3002B9C8C2E00BD8597 /* ToDoListRepository.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		155FD51C2B9E5AD300604788 /* ToDoListJSONDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FEC3012B9C8DEE00BD8597 /* ToDoListJSONDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15BCA73C2B974D71006A58C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCA73B2B974D71006A58C0 /* AppDelegate.swift */; };
 		15BCA73E2B974D71006A58C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCA73D2B974D71006A58C0 /* SceneDelegate.swift */; };
 		15BCA7402B974D71006A58C0 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCA73F2B974D71006A58C0 /* ToDoListViewController.swift */; };
@@ -14,7 +17,6 @@
 		15BCA7452B974D73006A58C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15BCA7442B974D73006A58C0 /* Assets.xcassets */; };
 		15BCA7482B974D73006A58C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BCA7462B974D73006A58C0 /* LaunchScreen.storyboard */; };
 		15BCA75C2B974DD7006A58C0 /* ToDoShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BCA7542B974DD7006A58C0 /* ToDoShared.framework */; };
-		15BCA7632B974DD7006A58C0 /* ToDoSharedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15BCA7622B974DD7006A58C0 /* ToDoSharedTests.m */; };
 		15BCA7642B974DD7006A58C0 /* ToDoShared.h in Headers */ = {isa = PBXBuildFile; fileRef = 15BCA7562B974DD7006A58C0 /* ToDoShared.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15BCA7672B974DD7006A58C0 /* ToDoShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BCA7542B974DD7006A58C0 /* ToDoShared.framework */; };
 		15BCA7682B974DD7006A58C0 /* ToDoShared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15BCA7542B974DD7006A58C0 /* ToDoShared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -69,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		155FD5192B9E402600604788 /* ToDoListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListServiceTests.swift; sourceTree = "<group>"; };
 		15BCA7382B974D71006A58C0 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BCA73B2B974D71006A58C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15BCA73D2B974D71006A58C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +83,6 @@
 		15BCA7542B974DD7006A58C0 /* ToDoShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToDoShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BCA7562B974DD7006A58C0 /* ToDoShared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoShared.h; sourceTree = "<group>"; };
 		15BCA75B2B974DD7006A58C0 /* ToDoSharedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoSharedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		15BCA7622B974DD7006A58C0 /* ToDoSharedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoSharedTests.m; sourceTree = "<group>"; };
 		15BCA7702B97726F006A58C0 /* TreeNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeNode.m; sourceTree = "<group>"; };
 		15FEC2EB2B9781A600BD8597 /* ToDoListService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListService.m; sourceTree = "<group>"; };
 		15FEC2ED2B97828E00BD8597 /* TreeNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeNode.h; sourceTree = "<group>"; };
@@ -251,7 +253,7 @@
 		15BCA7612B974DD7006A58C0 /* ToDoSharedTests */ = {
 			isa = PBXGroup;
 			children = (
-				15BCA7622B974DD7006A58C0 /* ToDoSharedTests.m */,
+				155FD5192B9E402600604788 /* ToDoListServiceTests.swift */,
 			);
 			path = ToDoSharedTests;
 			sourceTree = "<group>";
@@ -263,7 +265,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155FD51B2B9E463800604788 /* ToDoListRepository.h in Headers */,
 				15FEC2F22B9792B500BD8597 /* ToDoListService.h in Headers */,
+				155FD51C2B9E5AD300604788 /* ToDoListJSONDataSource.h in Headers */,
 				15FEC2F32B9792E700BD8597 /* TreeNode.h in Headers */,
 				15BCA7642B974DD7006A58C0 /* ToDoShared.h in Headers */,
 			);
@@ -346,6 +350,7 @@
 					};
 					15BCA75A2B974DD7006A58C0 = {
 						CreatedOnToolsVersion = 15.1;
+						LastSwiftMigration = 1510;
 						TestTargetID = 15BCA7372B974D71006A58C0;
 					};
 				};
@@ -427,7 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15BCA7632B974DD7006A58C0 /* ToDoSharedTests.m in Sources */,
+				155FD51A2B9E402600604788 /* ToDoListServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +617,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pankajapps.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -639,6 +645,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pankajapps.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -714,6 +721,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -721,6 +729,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pankajapps.ToDoSharedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ToDoSharedTests/ToDoSharedTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDo";
 			};
@@ -730,6 +741,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -737,6 +749,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pankajapps.ToDoSharedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ToDoSharedTests/ToDoSharedTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDo";
 			};

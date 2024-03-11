@@ -6,14 +6,17 @@
 //
 
 #import <ToDoShared/TreeNode.h>
+#import <ToDoShared/ToDoListRepository.h>
 
 @interface ToDoListService : NSObject
 
-@property(nonatomic, strong) NSMutableArray<TreeNode *> *todoList;
+@property(nonatomic, retain) NSMutableArray<TreeNode *> *todoList;
+@property(nonatomic, retain) ToDoListRepository *repository;
 
 -(NSMutableArray *)getFlattenedNodes;
 -(TreeNode *)getParentTreeNode:(TreeNode *)node;
 
+-(id) initWithRepository: (ToDoListRepository *) repository;
 -(void)saveNodeWithParent:(TreeNode *)parent andChild:(TreeNode *)child;
 
 -(void)updateTodoItem:(TreeNode *)node andText:(NSString *)text;

@@ -7,22 +7,27 @@
 
 #import <Foundation/Foundation.h>
 #import "ToDoListRepository.h"
-#import "ToDoListJSONDataSource.h"
 
 @implementation ToDoListRepository
 
+-(instancetype)initWithDatasource: (ToDoListJSONDataSource *) dataSource {
+    self = [super init];
+    if (self) {
+        _dataSource = [dataSource retain];
+    }
+    return self;
+}
+
 -(void) saveNodeList: (NSMutableArray<TreeNode *> *) todoList {
-    ToDoListJSONDataSource *datasource = [[ToDoListJSONDataSource alloc] init];
-    [datasource saveToDoList:todoList];
-    [datasource release];
+    [_dataSource saveToDoList:todoList];
 }
 
 -(NSMutableArray<TreeNode *> *) getNodeList {
-    ToDoListJSONDataSource *datasource = [[ToDoListJSONDataSource alloc] init];
-    return [datasource getToDoList];
+    return [_dataSource getToDoList];
 }
 
 - (void)dealloc {
+    [_dataSource release];
     [super dealloc];
 }
 

@@ -11,7 +11,7 @@ import ToDoShared
 class ToDoListViewController: UIViewController {
     
     @IBOutlet weak var todoTableView: UITableView!
-    let viewModel = ToDoViewModel(toDoListService: ToDoListService())
+    let viewModel = ToDoViewModel(toDoListService: ToDoListService(repository: ToDoListRepository(datasource: ToDoListJSONDataSource())))
     
     override func viewDidLoad() {
         super.viewDidLoad()

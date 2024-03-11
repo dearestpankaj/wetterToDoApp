@@ -92,8 +92,7 @@ NSString const *keyChildren = @"children";
     return mainArray;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [super dealloc];
 }
 

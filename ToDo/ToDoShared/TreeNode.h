@@ -13,6 +13,5 @@
 @property(nonatomic, assign) bool isCompleted;
 
 - (instancetype)initWithValue:(NSString *)title;
-- (void)addChild:(TreeNode *)child;
 
 @end

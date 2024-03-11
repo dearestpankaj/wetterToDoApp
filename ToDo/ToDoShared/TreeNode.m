@@ -20,10 +20,6 @@
     return self;
 }
 
-- (void)addChild:(TreeNode *)child {
-    [_children addObject:child];
-}
-
 - (void)dealloc
 {
     [_title release];
