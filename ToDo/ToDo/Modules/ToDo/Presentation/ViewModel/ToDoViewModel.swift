@@ -14,7 +14,7 @@ protocol ToDoViewModelProtocol {
     func setNodeCompletion(node: TreeNode, isComplete: Bool)
     func removeNodeAtIndex(index: Int, completion: (_ indexes: [IndexPath]) -> Void)
     func moveRowAt(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
-    func rowsOrderAllowed(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) -> Bool
+    func rowsReorderAllowed(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) -> Bool
 }
 
 class ToDoViewModel: ToDoViewModelProtocol {
@@ -62,7 +62,7 @@ class ToDoViewModel: ToDoViewModelProtocol {
     }
     
     //only allow reorder if it is done at same level
-    func rowsOrderAllowed(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) -> Bool {
+    func rowsReorderAllowed(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) -> Bool {
         guard let sourceRowIdentifier = todoList[sourceIndexPath.row].identifier,
               let destinationRowIdentifier = todoList[destinationIndexPath.row].identifier else {
             return false

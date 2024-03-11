@@ -110,7 +110,7 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        if !viewModel.rowsOrderAllowed(sourceIndexPath: sourceIndexPath, to: proposedDestinationIndexPath){
+        if !viewModel.rowsReorderAllowed(sourceIndexPath: sourceIndexPath, to: proposedDestinationIndexPath){
             return sourceIndexPath
         }
         return proposedDestinationIndexPath
