@@ -27,8 +27,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RD-dL-n2w">
-                                                    <rect key="frame" x="20" y="24" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RD-dL-n2w">
+                                                    <rect key="frame" x="20" y="16" width="265" height="37"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -55,11 +55,14 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3RD-dL-n2w" firstAttribute="leading" secondItem="pSj-pV-ClB" secondAttribute="leadingMargin" id="4BB-Sv-t4l"/>
+                                                <constraint firstItem="3RD-dL-n2w" firstAttribute="top" secondItem="pSj-pV-ClB" secondAttribute="topMargin" constant="5" id="E9v-6W-zUX"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3RD-dL-n2w" secondAttribute="bottom" constant="5" id="Iwv-IB-bk7"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="top" secondItem="pSj-pV-ClB" secondAttribute="topMargin" constant="8.6666666666666714" id="NN1-WO-7if"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="trailing" secondItem="pSj-pV-ClB" secondAttribute="trailingMargin" id="c3x-Qx-HCL"/>
                                                 <constraint firstItem="xmn-lF-9wj" firstAttribute="centerY" secondItem="4gh-Pw-HNF" secondAttribute="centerY" id="co4-su-K1S"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="centerY" secondItem="3RD-dL-n2w" secondAttribute="centerY" id="flO-9l-EOU"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="leading" secondItem="xmn-lF-9wj" secondAttribute="trailing" constant="18" id="uTx-jn-kad"/>
+                                                <constraint firstItem="xmn-lF-9wj" firstAttribute="leading" secondItem="3RD-dL-n2w" secondAttribute="trailing" constant="10" id="v8b-Ki-IR4"/>
                                                 <constraint firstItem="4gh-Pw-HNF" firstAttribute="centerY" secondItem="pSj-pV-ClB" secondAttribute="centerY" id="vC3-Fl-Fhb"/>
                                             </constraints>
                                         </tableViewCellContentView>
