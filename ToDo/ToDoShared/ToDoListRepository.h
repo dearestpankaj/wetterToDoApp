@@ -13,7 +13,8 @@
 @property(nonatomic, retain) ToDoListJSONDataSource *dataSource;
 
 -(instancetype)initWithDatasource: (ToDoListJSONDataSource *) dataSource;
--(void)saveNodeList: (NSMutableArray<TreeNode *> *) todoList;
+-(BOOL)saveNodeList: (NSMutableArray<TreeNode *> *) todoList;
 -(NSMutableArray<TreeNode *> *) getNodeList;
+
 @end
 

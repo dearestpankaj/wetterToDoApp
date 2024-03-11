@@ -88,7 +88,7 @@
     return [self flattenedNodeArray: node.children];
 }
 
-- (void) setNodeAndChildrenCompletion: (TreeNode *) node :(bool) isComplete {
+- (void) setNodeAndChildrenCompletion: (TreeNode *) node :(BOOL) isComplete {
     node.isCompleted = isComplete;
     NSMutableArray *childNodes = [self getFlattenedChildren:node];
     for (TreeNode *node in childNodes) {

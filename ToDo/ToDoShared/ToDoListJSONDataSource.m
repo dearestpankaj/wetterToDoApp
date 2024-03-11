@@ -15,12 +15,12 @@ NSString const *keyTitle = @"title";
 NSString const *keyIdentifier = @"identifier";
 NSString const *keyChildren = @"children";
 
--(void) saveToDoList:(NSMutableArray<TreeNode *> *)todoList {
+-(BOOL) saveToDoList:(NSMutableArray<TreeNode *> *)todoList {
     NSMutableArray *array = [self convertArrayToJson:todoList];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:&error];
     NSString *jsonString = [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease];
-    [self writeStringToFile:jsonString];
+    return [self writeStringToFile:jsonString];
 }
 
 -(NSMutableArray *) convertArrayToJson: (NSMutableArray *) array {
@@ -42,12 +42,12 @@ NSString const *keyChildren = @"children";
     return mainArray;
 }
 
-- (void)writeStringToFile:(NSString*)aString {
+- (BOOL)writeStringToFile:(NSString*)aString {
     NSString *fileAtPath = [self jsonFilePath];
     if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
         [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:nil attributes:nil];
     }
-    [[aString dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
+    return [[aString dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
 }
 
 -(NSMutableArray<TreeNode *> *)getToDoList {
@@ -56,7 +56,6 @@ NSString const *keyChildren = @"children";
     id jsonOutput = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
     NSMutableArray *todoList = [self convertJSONObjectsToNodes:jsonOutput];
-    
     return todoList;
 }
 
@@ -88,7 +87,6 @@ NSString const *keyChildren = @"children";
         }
         [mainArray addObject:node];
     }
-    
     return mainArray;
 }
 

@@ -18,8 +18,8 @@
     return self;
 }
 
--(void) saveNodeList: (NSMutableArray<TreeNode *> *) todoList {
-    [_dataSource saveToDoList:todoList];
+-(BOOL) saveNodeList: (NSMutableArray<TreeNode *> *) todoList {
+    return [_dataSource saveToDoList:todoList];
 }
 
 -(NSMutableArray<TreeNode *> *) getNodeList {

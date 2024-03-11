@@ -8,7 +8,7 @@
 
 @interface ToDoListJSONDataSource : NSObject
     
--(void) saveToDoList:(NSMutableArray<TreeNode *> *)todoList;
+-(BOOL) saveToDoList:(NSMutableArray<TreeNode *> *)todoList;
 -(NSMutableArray<TreeNode *> *)getToDoList;
 @end
 
